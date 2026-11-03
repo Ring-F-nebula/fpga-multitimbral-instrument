@@ -1,0 +1,13 @@
+# Local EDA and simulation working directories
+/firmware/work/
+/firmware/impl/
+/firmware/temp/
+/firmware/backup/
+/firmware/*.gprj.user
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+# Shipped ROM files, bitstreams and reports are intentionally tracked.

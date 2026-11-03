@@ -1,0 +1,16 @@
+if(page_q==6&&x>=102&&x<166&&y>=124&&y<180)begin number_visible=1;matrix_number=1;slot=6'd32;digit_count=2;decimal_point=0;origin_x=11'd102;origin_y=10'd124;end
+if(page_q==6&&x>=354&&x<418&&y>=124&&y<180)begin number_visible=1;matrix_number=1;slot=6'd33;digit_count=2;decimal_point=0;origin_x=11'd354;origin_y=10'd124;end
+if(page_q==6&&x>=606&&x<670&&y>=124&&y<180)begin number_visible=1;matrix_number=1;slot=6'd34;digit_count=2;decimal_point=0;origin_x=11'd606;origin_y=10'd124;end
+if(page_q==6&&x>=858&&x<922&&y>=124&&y<180)begin number_visible=1;matrix_number=1;slot=6'd35;digit_count=2;decimal_point=0;origin_x=11'd858;origin_y=10'd124;end
+if(page_q==6&&x>=102&&x<166&&y>=236&&y<292)begin number_visible=1;matrix_number=1;slot=6'd36;digit_count=2;decimal_point=0;origin_x=11'd102;origin_y=10'd236;end
+if(page_q==6&&x>=354&&x<418&&y>=236&&y<292)begin number_visible=1;matrix_number=1;slot=6'd37;digit_count=2;decimal_point=0;origin_x=11'd354;origin_y=10'd236;end
+if(page_q==6&&x>=606&&x<670&&y>=236&&y<292)begin number_visible=1;matrix_number=1;slot=6'd38;digit_count=2;decimal_point=0;origin_x=11'd606;origin_y=10'd236;end
+if(page_q==6&&x>=858&&x<922&&y>=236&&y<292)begin number_visible=1;matrix_number=1;slot=6'd39;digit_count=2;decimal_point=0;origin_x=11'd858;origin_y=10'd236;end
+if(page_q==6&&x>=102&&x<166&&y>=348&&y<404)begin number_visible=1;matrix_number=1;slot=6'd40;digit_count=2;decimal_point=0;origin_x=11'd102;origin_y=10'd348;end
+if(page_q==6&&x>=354&&x<418&&y>=348&&y<404)begin number_visible=1;matrix_number=1;slot=6'd41;digit_count=2;decimal_point=0;origin_x=11'd354;origin_y=10'd348;end
+if(page_q==6&&x>=606&&x<670&&y>=348&&y<404)begin number_visible=1;matrix_number=1;slot=6'd42;digit_count=2;decimal_point=0;origin_x=11'd606;origin_y=10'd348;end
+if(page_q==6&&x>=858&&x<922&&y>=348&&y<404)begin number_visible=1;matrix_number=1;slot=6'd43;digit_count=2;decimal_point=0;origin_x=11'd858;origin_y=10'd348;end
+if(page_q==6&&x>=102&&x<166&&y>=460&&y<516)begin number_visible=1;matrix_number=1;slot=6'd44;digit_count=2;decimal_point=0;origin_x=11'd102;origin_y=10'd460;end
+if(page_q==6&&x>=354&&x<418&&y>=460&&y<516)begin number_visible=1;matrix_number=1;slot=6'd45;digit_count=2;decimal_point=0;origin_x=11'd354;origin_y=10'd460;end
+if(page_q==6&&x>=606&&x<670&&y>=460&&y<516)begin number_visible=1;matrix_number=1;slot=6'd46;digit_count=2;decimal_point=0;origin_x=11'd606;origin_y=10'd460;end
+if(page_q==6&&x>=858&&x<922&&y>=460&&y<516)begin number_visible=1;matrix_number=1;slot=6'd47;digit_count=2;decimal_point=0;origin_x=11'd858;origin_y=10'd460;end

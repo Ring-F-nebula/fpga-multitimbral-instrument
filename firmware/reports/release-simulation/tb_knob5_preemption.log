@@ -1,0 +1,56 @@
+Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -l tb_knob5_preemption.transcript.log -wlf tb_knob5_preemption.wlf tb_knob5_preemption -do "onerror {quit -code 1}; run -all; quit -f" 
+# Start time: 23:33:38 on Nov 02,2026
+# Loading sv_std.std
+# Loading work.tb_knob5_preemption
+# Loading work.knob5_controls
+# Loading work.competition_control
+# Loading work.fx_registers
+# Loading work.ec11_decoder
+# Loading work.button_press
+# ** Warning: (vsim-3017) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Too few port connections. Expected 59, found 26.
+#    Time: 0 ps  Iteration: 0  Instance: /tb_knob5_preemption/control File: X:/src/competition_control.v
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'instrument'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'guitar_chord'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'guitar_analysis'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'stopped'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'clear_audio'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'hold_mode'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'test_count'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'selected'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'test_muted'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'gain'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'vibrato_override'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'vibrato'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'bpm'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'song'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'practice_command_valid'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'practice_command'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'record_command_valid'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'record_command'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'audio_command_valid'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'audio_command'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'record_auto_trigger'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'mapping_reset_done'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'record_query'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'note_numbers'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'performance_keys'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'newest_voice'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'voice_gains'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'upload_expected'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'upload_received'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'upload_ready'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'upload_matrix_ok'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'song_note'.
+# ** Warning: (vsim-3722) X:/sim/tb_knob5_preemption.sv(8): [TFMPC] - Missing connection for port 'song_duration'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS knob5_preemption: queued relative changes rebase after first/second-stage bus preemption, without stale overwrite or duplicate bend steps
+# ** Note: $finish    : X:/sim/tb_knob5_preemption.sv(32)
+#    Time: 2240 ns  Iteration: 1  Instance: /tb_knob5_preemption
+# End time: 23:33:38 on Nov 02,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 34

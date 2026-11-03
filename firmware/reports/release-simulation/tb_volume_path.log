@@ -1,0 +1,107 @@
+Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -l tb_volume_path.transcript.log -wlf tb_volume_path.wlf cfg_tb_volume_path -do "onerror {quit -code 1}; run -all; quit -f" 
+# Start time: 23:34:20 on Nov 02,2026
+# Loading work.cfg_tb_volume_path
+# Loading sv_std.std
+# Loading work.tb_volume_path
+# Loading work.GSR
+# Loading work.dualmode_top
+# Loading work.merged_clock_test_stub
+# Loading work.button_press
+# Loading work.pt8211_tx
+# Loading work.uart_link
+# Loading work.capacitive_touch
+# Loading work.i2c_register_master
+# Loading work.panel_ui
+# Loading work.knob5_controls
+# Loading work.wax_pressure_frontend
+# Loading work.wax_uart_rx
+# Loading work.wax_packet
+# Loading work.wax_settings
+# Loading work.uart_tx
+# Loading work.wax_pressure
+# Loading work.competition_control
+# Loading work.fx_registers
+# Loading work.practice32
+# Loading work.midi_step_rom
+# Loading work.event_recorder
+# Loading work.poly32_synth
+# Loading work.fx_pitch_coeff
+# Loading work.frequency_bank4
+# Loading work.note_step_cache
+# Loading work.instrument_wave_table
+# Loading work.guitar_wave_table
+# Loading work.guitar_body_sp
+# Loading work.SP
+# Loading work.guitar_attack_sp
+# Loading work.audio_effects
+# Loading work.reverb_coeff
+# Loading work.audio_conditioner
+# Loading work.audio_master
+# Loading work.audio_capture
+# Loading work.lcd_test_stub
+# Loading work.lcd_stub_scope
+# Loading work.competition_status
+# Loading work.ec11_decoder
+# Loading work.frequency_lane8
+# Loading work.adsr_envelope
+# ** Warning: (vsim-3017) X:/sim/tb_volume_path.sv(6): [TFMPC] - Too few port connections. Expected 34, found 13.
+#    Time: 0 ps  Iteration: 0  Instance: /tb_volume_path/dut File: X:/src/dualmode_top.v
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'BT_TX'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'WAX_RX'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'WAX_TX'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'HP_BCK'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'HP_WS'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'HP_DIN'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'PA_EN'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'UART_TX'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'lcd_r'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'lcd_g'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'lcd_b'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'lcd_clk'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'lcd_hsync'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'lcd_vsync'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'lcd_de'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'lcd_bl'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'lcd_reset'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'touch_scl'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'touch_sda'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'touch_int'.
+# ** Warning: (vsim-3722) X:/sim/tb_volume_path.sv(6): [TFMPC] - Missing connection for port 'touch_reset_n'.
+# ** Warning: (vsim-3017) X:/src/dualmode_top.v(39): [TFMPC] - Too few port connections. Expected 21, found 15.
+#    Time: 0 ps  Iteration: 0  Instance: /tb_volume_path/dut/usb File: X:/src/uart_link.v
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(39): [TFMPC] - Missing connection for port 'attack_sel'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(39): [TFMPC] - Missing connection for port 'decay_sel'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(39): [TFMPC] - Missing connection for port 'release_sel'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(39): [TFMPC] - Missing connection for port 'volume'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(39): [TFMPC] - Missing connection for port 'sustain_level'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(39): [TFMPC] - Missing connection for port 'volume_event'.
+# ** Warning: (vsim-3017) X:/src/dualmode_top.v(40): [TFMPC] - Too few port connections. Expected 21, found 15.
+#    Time: 0 ps  Iteration: 0  Instance: /tb_volume_path/dut/bluetooth File: X:/src/uart_link.v
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(40): [TFMPC] - Missing connection for port 'attack_sel'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(40): [TFMPC] - Missing connection for port 'decay_sel'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(40): [TFMPC] - Missing connection for port 'release_sel'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(40): [TFMPC] - Missing connection for port 'volume'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(40): [TFMPC] - Missing connection for port 'sustain_level'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(40): [TFMPC] - Missing connection for port 'volume_event'.
+# ** Warning: (vsim-3017) X:/src/dualmode_top.v(64): [TFMPC] - Too few port connections. Expected 49, found 44.
+#    Time: 0 ps  Iteration: 0  Instance: /tb_volume_path/dut/ui File: X:/src/panel_ui.v
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(64): [TFMPC] - Missing connection for port 'instrument'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(64): [TFMPC] - Missing connection for port 'volume'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(64): [TFMPC] - Missing connection for port 'instrument_changed'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(64): [TFMPC] - Missing connection for port 'selected_pad'.
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(64): [TFMPC] - Missing connection for port 'recalibrate'.
+# ** Warning: (vsim-3017) X:/src/dualmode_top.v(153): [TFMPC] - Too few port connections. Expected 7, found 6.
+#    Time: 0 ps  Iteration: 0  Instance: /tb_volume_path/dut/output_filter File: X:/src/audio_conditioner.v
+# ** Warning: (vsim-3722) X:/src/dualmode_top.v(153): [TFMPC] - Missing connection for port 'idle'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS volume_path: actual touch 8/4/0/8 -> 100% wet FX -> master -> real decoded stereo DAC; squared gain ratio=0.252437; stable amp/FX, zero silence
+# ** Note: $finish    : X:/sim/tb_volume_path.sv(37)
+#    Time: 31449770 ns  Iteration: 1  Instance: /tb_volume_path
+# End time: 23:36:47 on Nov 02,2026, Elapsed time: 0:02:27
+# Errors: 0, Warnings: 44

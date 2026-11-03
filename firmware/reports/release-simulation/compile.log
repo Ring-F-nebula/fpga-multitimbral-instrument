@@ -1,0 +1,439 @@
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:33:31 on Nov 02,2026
+vlog -sv "+incdir+src" X:\src\adsr_envelope.v X:\src\audio_analyzer.v X:\src\audio_capture.v X:\src\audio_conditioner.v X:\src\audio_effects.v X:\src\audio_master.v X:\src\capacitive_controls.v X:\src\capacitive_touch.v X:\src\competition_control.v X:\src\competition_status.v X:\src\delay_fx.v X:\src\dualmode_top.v X:\src\ec11_bend.v X:\src\event_recorder.v X:\src\frequency_bank4.v X:\src\fsr_adc.v X:\src\fsr_keyboard.v X:\src\fsr_scanner.v X:\src\fsr_volume.v X:\src\fx_pitch_coeff.v 
+-- Compiling module adsr_envelope
+-- Compiling module audio_analyzer
+-- Compiling module audio_capture
+-- Compiling module audio_conditioner
+-- Compiling module audio_effects
+-- Compiling module audio_master
+-- Compiling module capacitive_controls
+-- Compiling module capacitive_touch
+-- Compiling module competition_control
+-- Compiling module competition_status
+-- Compiling module delay_fx
+-- Compiling module dualmode_top
+-- Compiling module button_press
+-- Compiling module mode_control
+-- Compiling module pt8211_tx
+-- Compiling module ec11_decoder
+-- Compiling module single_note_bend
+-- Compiling module event_recorder
+-- Compiling module frequency_bank4
+-- Compiling module frequency_lane8
+-- Compiling module fsr_adc
+-- Compiling module fsr_keyboard
+-- Compiling module fsr_scanner
+-- Compiling module fsr_volume
+-- Compiling module fx_pitch_coeff
+
+Top level modules:
+	adsr_envelope
+	audio_analyzer
+	capacitive_controls
+	delay_fx
+	dualmode_top
+	mode_control
+	ec11_decoder
+	single_note_bend
+	frequency_bank4
+	fsr_adc
+	fsr_keyboard
+	fsr_volume
+	fx_pitch_coeff
+End time: 23:33:31 on Nov 02,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:33:31 on Nov 02,2026
+vlog -sv "+incdir+src" X:\src\fx_registers.v X:\src\game_screen.v X:\src\guitar_wave_table.v X:\src\i2c_register_master.v X:\src\i2s_tx.v X:\src\input_filter.v X:\src\instrument_screen.v X:\src\instrument_wave_table.v X:\src\knob5_controls.v X:\src\laser_inputs.v X:\src\lcd_status.v X:\src\legacy_io.v X:\src\merged_clock.v X:\src\midi_step_rom.v X:\src\note_glide.v X:\src\note_step_cache.v X:\src\panel_map_address.v X:\src\panel_renderer.v X:\src\panel_rom.v X:\src\panel_ui.v 
+-- Compiling module fx_registers
+-- Compiling module game_screen
+-- Compiling module guitar_wave_table
+-- Compiling module guitar_body_sp
+-- Compiling module guitar_attack_sp
+-- Compiling module i2c_register_master
+-- Compiling module i2s_tx
+-- Compiling module input_filter
+-- Compiling module instrument_screen
+-- Compiling module instrument_wave_table
+-- Compiling module knob5_controls
+-- Compiling module laser_inputs
+-- Compiling module lcd_status
+-- Compiling module pc_key_receiver
+-- Compiling module uart_rx_8n1
+-- Compiling module matrix4x4
+-- Compiling module rotary_volume
+-- Compiling module merged_clock
+-- Compiling module midi_step_rom
+-- Compiling module note_glide
+-- Compiling module note_step_cache
+-- Compiling module panel_map_address
+-- Compiling module panel_renderer
+-- Compiling module panel_rom
+-- Compiling module panel_map_sp
+-- Compiling module panel_text_sp
+-- Compiling module panel_digits_sp
+-- Compiling module panel_ui
+
+Top level modules:
+	fx_registers
+	guitar_wave_table
+	i2c_register_master
+	i2s_tx
+	instrument_screen
+	instrument_wave_table
+	knob5_controls
+	laser_inputs
+	lcd_status
+	pc_key_receiver
+	matrix4x4
+	rotary_volume
+	merged_clock
+	note_glide
+	note_step_cache
+	panel_ui
+End time: 23:33:32 on Nov 02,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:33:32 on Nov 02,2026
+vlog -sv "+incdir+src" X:\src\performance_synth.v X:\src\pitch_coeff_rom.v X:\src\poly32_synth.v X:\src\practice32.v X:\src\reflect_sensor.v X:\src\reverb_coeff.v X:\src\rhythm_game.v X:\src\safe_synth.v X:\src\score_rom.v X:\src\song_player.v X:\src\status_decimal.v X:\src\text_cell.v X:\src\tone_rom.v X:\src\touch_ui.v X:\src\uart_link.v X:\src\wax_packet.v X:\src\wax_pressure.v X:\src\wax_pressure_frontend.v X:\src\wax_settings.v X:\src\wax_uart_rx.v 
+-- Compiling module performance_synth
+-- Compiling module pitch_coeff_rom
+-- Compiling module poly32_synth
+-- Compiling module practice32
+-- Compiling module reflect_sensor
+-- Compiling module reverb_coeff
+-- Compiling module rhythm_game
+-- Compiling module safe_synth
+-- Compiling module score_rom
+-- Compiling module song_player
+-- Compiling module status_decimal
+-- Compiling module text_cell
+-- Compiling module tone_rom
+-- Compiling module touch_ui
+-- Compiling module uart_link
+-- Compiling module uart_tx
+-- Compiling module uart_status
+-- Compiling module wax_packet
+-- Compiling module wax_pressure
+-- Compiling module wax_pressure_frontend
+-- Compiling module wax_settings
+-- Compiling module wax_uart_rx
+
+Top level modules:
+	performance_synth
+	poly32_synth
+	practice32
+	reflect_sensor
+	reverb_coeff
+	rhythm_game
+	safe_synth
+	song_player
+	status_decimal
+	text_cell
+	tone_rom
+	touch_ui
+	uart_link
+	uart_status
+	wax_pressure_frontend
+End time: 23:33:33 on Nov 02,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:33:33 on Nov 02,2026
+vlog -sv "+incdir+src" X:\src\xy_scope.v X:\sim\fsr_adc_test_stub.sv X:\sim\guitar_baseline_poly32.sv X:\sim\lcd_test_binding.sv X:\sim\legacy_text_test_stub.sv X:\sim\reference_poly32.sv X:\sim\rejected_poly32.sv X:\sim\stable_poly32.sv X:\sim\tb_adsr.sv X:\sim\tb_adsr_presets.sv X:\sim\tb_audio_analyzer.sv X:\sim\tb_audio_capture.sv X:\sim\tb_audio_conditioner.sv X:\sim\tb_audio_effects.sv X:\sim\tb_audio_master.sv X:\sim\tb_audio_regression.sv X:\sim\tb_audio_render.sv X:\sim\tb_bluetooth.sv X:\sim\tb_bt_audio.sv X:\sim\tb_competition_control.sv 
+-- Compiling module xy_scope
+-- Compiling module fsr_adc_test_stub
+-- Compiling module guitar_baseline_poly32
+-- Compiling module lcd_test_stub
+-- Compiling module lcd_stub_scope
+-- Compiling configuration cfg_tb_integration
+-- Compiling configuration cfg_tb_touch_top
+-- Compiling configuration cfg_tb_laser_merge
+-- Compiling configuration cfg_tb_touch_bluetooth_merge
+-- Compiling configuration cfg_tb_fsr_top
+-- Compiling configuration cfg_tb_fsr_guard_top
+-- Compiling module merged_clock_test_stub
+-- Compiling configuration cfg_tb_bt_audio
+-- Compiling configuration cfg_tb_game_bluetooth
+-- Compiling configuration cfg_tb_game_top
+-- Compiling configuration cfg_tb_fx_stop_top
+-- Compiling module legacy_text_test_stub
+-- Compiling module legacy_game_test_stub
+-- Compiling module legacy_decimal_test_stub
+-- Compiling module reference_poly32
+-- Compiling module rejected_poly32
+-- Compiling module stable_poly32
+-- Compiling module tb_adsr
+-- Compiling module tb_adsr_presets
+-- Compiling module tb_audio_analyzer
+-- Compiling module tb_audio_capture
+-- Compiling module tb_audio_conditioner
+-- Compiling module tb_audio_effects
+-- Compiling module tb_audio_master
+-- Compiling module tb_audio_regression
+-- Compiling module tb_audio_render
+-- Compiling module tb_bluetooth
+-- Compiling module tb_bt_audio
+-- Compiling module tb_competition_control
+
+Top level modules:
+	xy_scope
+	guitar_baseline_poly32
+	cfg_tb_integration
+	cfg_tb_touch_top
+	cfg_tb_laser_merge
+	cfg_tb_touch_bluetooth_merge
+	cfg_tb_fsr_top
+	cfg_tb_fsr_guard_top
+	cfg_tb_bt_audio
+	cfg_tb_game_bluetooth
+	cfg_tb_game_top
+	cfg_tb_fx_stop_top
+	legacy_text_test_stub
+	legacy_game_test_stub
+	legacy_decimal_test_stub
+	stable_poly32
+	tb_adsr
+	tb_adsr_presets
+	tb_audio_analyzer
+	tb_audio_capture
+	tb_audio_conditioner
+	tb_audio_effects
+	tb_audio_master
+	tb_audio_regression
+	tb_audio_render
+	tb_bluetooth
+	tb_competition_control
+End time: 23:33:33 on Nov 02,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:33:33 on Nov 02,2026
+vlog -sv "+incdir+src" X:\sim\tb_competition_status.sv X:\sim\tb_competition_top.sv X:\sim\tb_controls.sv X:\sim\tb_dac.sv X:\sim\tb_ec11.sv X:\sim\tb_event_recorder.sv X:\sim\tb_font_equivalence.sv X:\sim\tb_frequency_bank4.sv X:\sim\tb_fsr_display.sv X:\sim\tb_fsr_gain_smooth.sv X:\sim\tb_fsr_guard_top.sv X:\sim\tb_fsr_idle_regression.sv X:\sim\tb_fsr_keyboard.sv X:\sim\tb_fsr_latency.sv X:\sim\tb_fsr_response.sv X:\sim\tb_fsr_scanner.sv X:\sim\tb_fsr_small_signal.sv X:\sim\tb_fsr_stream.sv X:\sim\tb_fsr_synth.sv X:\sim\tb_fsr_top.sv 
+-- Compiling module tb_competition_status
+-- Compiling module tb_competition_top
+-- Compiling configuration cfg_tb_competition_top
+-- Compiling module tb_controls
+-- Compiling module tb_dac
+-- Compiling module tb_ec11
+-- Compiling module tb_event_recorder
+-- Compiling module tb_font_equivalence
+-- Compiling module tb_frequency_bank4
+-- Compiling module tb_fsr_display
+-- Compiling module tb_fsr_gain_smooth
+-- Compiling module tb_fsr_guard_top
+-- Compiling module tb_fsr_idle_regression
+-- Compiling module tb_fsr_keyboard
+-- Compiling module tb_fsr_latency
+-- Compiling configuration cfg_tb_fsr_latency
+-- Compiling module tb_fsr_response
+-- Compiling configuration cfg_tb_fsr_response
+-- Compiling module tb_fsr_scanner
+-- Compiling module tb_fsr_small_signal
+-- Compiling module tb_fsr_stream
+-- Compiling module tb_fsr_synth
+-- Compiling module tb_fsr_top
+
+Top level modules:
+	tb_competition_status
+	cfg_tb_competition_top
+	tb_controls
+	tb_dac
+	tb_ec11
+	tb_event_recorder
+	tb_font_equivalence
+	tb_frequency_bank4
+	tb_fsr_display
+	tb_fsr_gain_smooth
+	tb_fsr_guard_top
+	tb_fsr_idle_regression
+	tb_fsr_keyboard
+	cfg_tb_fsr_latency
+	cfg_tb_fsr_response
+	tb_fsr_scanner
+	tb_fsr_small_signal
+	tb_fsr_stream
+	tb_fsr_synth
+	tb_fsr_top
+End time: 23:33:34 on Nov 02,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:33:34 on Nov 02,2026
+vlog -sv "+incdir+src" X:\sim\tb_fsr_volume.sv X:\sim\tb_fx_protocol.sv X:\sim\tb_fx_stop_top.sv X:\sim\tb_fx_strength.sv X:\sim\tb_game_bluetooth.sv X:\sim\tb_game_screen.sv X:\sim\tb_game_top.sv X:\sim\tb_guitar_audio.sv X:\sim\tb_guitar_control.sv X:\sim\tb_guitar_rom.sv X:\sim\tb_i2c_faults.sv X:\sim\tb_i2s.sv X:\sim\tb_instrument_screen.sv X:\sim\tb_instrument_surface.sv X:\sim\tb_instruments.sv X:\sim\tb_integration.sv X:\sim\tb_ir_release.sv X:\sim\tb_knob5.sv X:\sim\tb_knob5_preemption.sv X:\sim\tb_knob5_top.sv 
+-- Compiling module tb_fsr_volume
+-- Compiling module tb_fx_protocol
+-- Compiling module tb_fx_stop_top
+-- Compiling module tb_fx_strength
+-- Compiling module tb_game_bluetooth
+-- Compiling module tb_game_screen
+-- Compiling module tb_game_top
+-- Compiling module tb_guitar_audio
+-- Compiling module tb_guitar_control
+-- Compiling configuration cfg_tb_guitar_control
+-- Compiling module tb_guitar_rom
+-- Compiling module tb_i2c_faults
+-- Compiling module tb_i2s
+-- Compiling module tb_instrument_screen
+-- Compiling module tb_instrument_surface
+-- Compiling module tb_instruments
+-- Compiling module tb_integration
+-- Compiling module tb_ir_release
+-- Compiling module tb_knob5
+-- Compiling module tb_knob5_preemption
+-- Compiling module tb_knob5_top
+-- Compiling configuration cfg_tb_knob5_top
+
+Top level modules:
+	tb_fsr_volume
+	tb_fx_protocol
+	tb_fx_stop_top
+	tb_fx_strength
+	tb_game_bluetooth
+	tb_game_screen
+	tb_game_top
+	tb_guitar_audio
+	cfg_tb_guitar_control
+	tb_guitar_rom
+	tb_i2c_faults
+	tb_i2s
+	tb_instrument_screen
+	tb_instrument_surface
+	tb_instruments
+	tb_integration
+	tb_ir_release
+	tb_knob5
+	tb_knob5_preemption
+	cfg_tb_knob5_top
+End time: 23:33:34 on Nov 02,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:33:34 on Nov 02,2026
+vlog -sv "+incdir+src" X:\sim\tb_laser_merge.sv X:\sim\tb_lcd_status.sv X:\sim\tb_map_equivalence.sv X:\sim\tb_merged_clock.sv X:\sim\tb_music_quality.sv X:\sim\tb_native_display.sv X:\sim\tb_native_spectrum.sv X:\sim\tb_native_top.sv X:\sim\tb_native_ui.sv X:\sim\tb_note_step_cache.sv X:\sim\tb_oscillators32.sv X:\sim\tb_panel_regression.sv X:\sim\tb_pitch_fx.sv X:\sim\tb_poly32.sv X:\sim\tb_practice32.sv X:\sim\tb_practice_exit.sv X:\sim\tb_practice_window.sv X:\sim\tb_pressure_equivalence.sv X:\sim\tb_pressure_matrix_display.sv X:\sim\tb_pressure_matrix_scoring.sv 
+-- Compiling module tb_laser_merge
+-- Compiling module tb_lcd_status
+-- Compiling module tb_map_equivalence
+-- Compiling module tb_merged_clock
+-- Compiling module tb_music_quality
+-- Compiling module tb_native_display
+-- Compiling configuration cfg_tb_native_display
+-- Compiling module tb_native_spectrum
+-- Compiling module tb_native_top
+-- Compiling configuration cfg_tb_native_top
+-- Compiling module tb_native_ui
+-- Compiling module tb_note_step_cache
+-- Compiling module tb_oscillators32
+-- Compiling module tb_panel_regression
+-- Compiling configuration cfg_tb_panel_regression
+-- Compiling module tb_pitch_fx
+-- Compiling module tb_poly32
+-- Compiling module tb_practice32
+-- Compiling module tb_practice_exit
+-- Compiling configuration cfg_tb_practice_exit
+-- Compiling module tb_practice_window
+-- Compiling module tb_pressure_equivalence
+-- Compiling module tb_pressure_matrix_display
+-- Compiling module tb_pressure_matrix_scoring
+
+Top level modules:
+	tb_laser_merge
+	tb_lcd_status
+	tb_map_equivalence
+	tb_merged_clock
+	tb_music_quality
+	cfg_tb_native_display
+	tb_native_spectrum
+	cfg_tb_native_top
+	tb_native_ui
+	tb_note_step_cache
+	tb_oscillators32
+	cfg_tb_panel_regression
+	tb_pitch_fx
+	tb_poly32
+	tb_practice32
+	cfg_tb_practice_exit
+	tb_practice_window
+	tb_pressure_equivalence
+	tb_pressure_matrix_display
+	tb_pressure_matrix_scoring
+End time: 23:33:34 on Nov 02,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:33:34 on Nov 02,2026
+vlog -sv "+incdir+src" X:\sim\tb_pressure_matrix_top.sv X:\sim\tb_pressure_matrix_upload.sv X:\sim\tb_report_latency.sv X:\sim\tb_rhythm_game.sv X:\sim\tb_song.sv X:\sim\tb_spp_uart_profiles.sv X:\sim\tb_status_decimal.sv X:\sim\tb_synth.sv X:\sim\tb_testtone_quality.sv X:\sim\tb_text_cell.sv X:\sim\tb_touch_bluetooth_merge.sv X:\sim\tb_touch_bus.sv X:\sim\tb_touch_spectrum_top.sv X:\sim\tb_touch_top.sv X:\sim\tb_touch_ui.sv X:\sim\tb_uart32.sv X:\sim\tb_uart_v2.sv X:\sim\tb_ui_actions.sv X:\sim\tb_ui_font.sv X:\sim\tb_volume_path.sv 
+-- Compiling module tb_pressure_matrix_top
+-- Compiling configuration cfg_tb_pressure_matrix_top
+-- Compiling module tb_pressure_matrix_upload
+-- Compiling module tb_report_latency
+-- Compiling configuration cfg_tb_report_latency
+-- Compiling module tb_rhythm_game
+-- Compiling module tb_song
+-- Compiling module tb_spp_uart_profiles
+-- Compiling module tb_status_decimal
+-- Compiling module tb_synth
+-- Compiling module tb_testtone_quality
+-- Compiling module tb_text_cell
+-- Compiling module tb_touch_bluetooth_merge
+-- Compiling module merge_status_monitor
+-- Compiling module tb_touch_bus
+-- Compiling module tb_touch_spectrum_top
+-- Compiling configuration cfg_tb_touch_spectrum_top
+-- Compiling module tb_touch_top
+-- Compiling module tb_touch_ui
+-- Compiling module tb_uart32
+-- Compiling module tb_uart_v2
+-- Compiling module tb_ui_actions
+-- Compiling configuration cfg_tb_ui_actions
+-- Compiling module tb_ui_font
+-- Compiling module tb_volume_path
+-- Compiling configuration cfg_tb_volume_path
+
+Top level modules:
+	cfg_tb_pressure_matrix_top
+	tb_pressure_matrix_upload
+	cfg_tb_report_latency
+	tb_rhythm_game
+	tb_song
+	tb_spp_uart_profiles
+	tb_status_decimal
+	tb_synth
+	tb_testtone_quality
+	tb_text_cell
+	tb_touch_bluetooth_merge
+	tb_touch_bus
+	cfg_tb_touch_spectrum_top
+	tb_touch_top
+	tb_touch_ui
+	tb_uart32
+	tb_uart_v2
+	cfg_tb_ui_actions
+	tb_ui_font
+	cfg_tb_volume_path
+End time: 23:33:35 on Nov 02,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:33:35 on Nov 02,2026
+vlog -sv "+incdir+src" X:\sim\tb_wax_control_merge.sv X:\sim\tb_wax_host_config.sv X:\sim\tb_wax_pressure.sv X:\sim\tb_wax_protocol.sv X:\sim\tb_wax_settings.sv X:\sim\tb_wax_status_merge.sv X:\sim\tb_wax_top_merge.sv X:\sim\tb_xy_scope.sv X:\sim\touch_slave_model.sv X:\sim\wax_pressure_reference.sv 
+-- Compiling module tb_wax_control_merge
+-- Compiling module tb_wax_host_config
+-- Compiling module tb_wax_pressure
+-- Compiling module tb_wax_protocol
+-- Compiling module tb_wax_settings
+-- Compiling module tb_wax_status_merge
+-- Compiling module tb_wax_top_merge
+-- Compiling configuration cfg_tb_wax_top_merge
+-- Compiling module tb_xy_scope
+-- Compiling module touch_slave_model
+-- Compiling module wax_pressure_reference
+
+Top level modules:
+	tb_wax_control_merge
+	tb_wax_host_config
+	tb_wax_pressure
+	tb_wax_protocol
+	tb_wax_settings
+	tb_wax_status_merge
+	cfg_tb_wax_top_merge
+	tb_xy_scope
+	touch_slave_model
+	wax_pressure_reference
+End time: 23:33:35 on Nov 02,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

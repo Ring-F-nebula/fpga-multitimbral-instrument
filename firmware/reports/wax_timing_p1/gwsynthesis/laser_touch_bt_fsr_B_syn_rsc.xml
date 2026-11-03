@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="dualmode_top" Register="343" Alu="80" Lut="682" T_Register="31817(343)" T_Alu="15073(80)" T_Lut="53232(682)" T_MULTALU27X18="39(0)" T_MULT12X12="14(0)" T_MULT27X36="35(0)" T_Bsram="287(0)">
+ <SubModule name="clock_gen"/>
+ <SubModule name="key0" Register="23" Alu="18" Lut="12" T_Register="23(23)" T_Alu="18(18)" T_Lut="12(12)"/>
+ <SubModule name="key1" Register="23" Alu="18" Lut="12" T_Register="23(23)" T_Alu="18(18)" T_Lut="12(12)"/>
+ <SubModule name="dac" Register="28" Alu="4" Lut="21" T_Register="28(28)" T_Alu="4(4)" T_Lut="21(21)"/>
+ <SubModule name="usb" Register="300" Alu="78" Lut="705" T_Register="300(300)" T_Alu="78(78)" T_Lut="705(705)"/>
+ <SubModule name="bluetooth" Register="300" Alu="78" Lut="632" T_Register="300(300)" T_Alu="78(78)" T_Lut="632(632)"/>
+ <SubModule name="touch_reader" Register="221" Alu="15" Lut="773" T_Register="515(221)" T_Alu="30(15)" T_Lut="1072(773)">
+  <SubModule name="bus" Register="294" Alu="15" Lut="299" T_Register="294(294)" T_Alu="15(15)" T_Lut="299(299)"/>
+ </SubModule>
+ <SubModule name="ui" Register="568" Alu="117" Lut="2618" MULTALU27X18="2" T_Register="568(568)" T_Alu="117(117)" T_Lut="2618(2618)" T_MULTALU27X18="2(2)"/>
+ <SubModule name="knobs" Register="89" Alu="205" Lut="617" MULT12X12="2" T_Register="272(89)" T_Alu="318(205)" T_Lut="724(617)" T_MULT12X12="2(2)">
+  <SubModule name="encoders[0].decoder" Register="32" Alu="19" Lut="19" T_Register="32(32)" T_Alu="19(19)" T_Lut="19(19)"/>
+  <SubModule name="encoders[1].decoder" Register="32" Alu="19" Lut="19" T_Register="32(32)" T_Alu="19(19)" T_Lut="19(19)"/>
+  <SubModule name="encoders[2].decoder" Register="32" Alu="19" Lut="19" T_Register="32(32)" T_Alu="19(19)" T_Lut="19(19)"/>
+  <SubModule name="encoders[3].decoder" Register="32" Alu="19" Lut="19" T_Register="32(32)" T_Alu="19(19)" T_Lut="19(19)"/>
+  <SubModule name="encoders[4].decoder" Register="32" Alu="19" Lut="19" T_Register="32(32)" T_Alu="19(19)" T_Lut="19(19)"/>
+  <SubModule name="encoders[4].button" Register="23" Alu="18" Lut="12" T_Register="23(23)" T_Alu="18(18)" T_Lut="12(12)"/>
+ </SubModule>
+ <SubModule name="wax_input" T_Register="4558(0)" T_Alu="732(0)" T_Lut="3842(0)">
+  <SubModule name="rx" Register="42" Lut="67" T_Register="42(42)" T_Lut="67(67)"/>
+  <SubModule name="parser" Register="877" Alu="45" Lut="162" T_Register="877(877)" T_Alu="45(45)" T_Lut="162(162)"/>
+  <SubModule name="settings" Register="100" Alu="7" Lut="89" T_Register="126(100)" T_Alu="7(7)" T_Lut="138(89)">
+   <SubModule name="sender" Register="26" Lut="49" T_Register="26(26)" T_Lut="49(49)"/>
+  </SubModule>
+  <SubModule name="pressure" Register="3513" Alu="680" Lut="3475" T_Register="3513(3513)" T_Alu="680(680)" T_Lut="3475(3475)"/>
+ </SubModule>
+ <SubModule name="control" Register="939" Alu="41" Lut="1494" Bsram="1" T_Register="939(939)" T_Alu="41(41)" T_Lut="1494(1494)" T_Bsram="1(1)"/>
+ <SubModule name="fx_control" Register="128" Lut="414" T_Register="128(128)" T_Lut="414(414)"/>
+ <SubModule name="practice" Register="156" Alu="101" Lut="490" T_Register="156(156)" T_Alu="101(101)" T_Lut="490(490)"/>
+ <SubModule name="recorder" Register="280" Alu="73" Lut="503" Bsram="2" T_Register="280(280)" T_Alu="73(73)" T_Lut="503(503)" T_Bsram="2(2)"/>
+ <SubModule name="synth" Register="7095" Alu="4776" Lut="8977" MULTALU27X18="4" MULT12X12="1" MULT27X36="2" Bsram="1" T_Register="16613(7095)" T_Alu="11272(4776)" T_Lut="22222(8977)" T_MULTALU27X18="13(4)" T_MULT12X12="1(1)" T_MULT27X36="35(2)" T_Bsram="7(1)">
+  <SubModule name="pitch" Lut="18" T_Lut="18(18)"/>
+  <SubModule name="frequency_bank" Register="949" Alu="3" Lut="255" T_Register="7215(949)" T_Alu="875(3)" T_Lut="4561(255)" T_MULTALU27X18="8(0)">
+   <SubModule name="cache" Register="786" Alu="4" Lut="352" T_Register="786(786)" T_Alu="4(4)" T_Lut="651(352)">
+    <SubModule name="convert" Lut="299" T_Lut="299(299)"/>
+   </SubModule>
+   <SubModule name="lanes[0].pipe" Register="1370" Alu="217" Lut="912" MULTALU27X18="2" T_Register="1370(1370)" T_Alu="217(217)" T_Lut="912(912)" T_MULTALU27X18="2(2)"/>
+   <SubModule name="lanes[1].pipe" Register="1370" Alu="217" Lut="909" MULTALU27X18="2" T_Register="1370(1370)" T_Alu="217(217)" T_Lut="909(909)" T_MULTALU27X18="2(2)"/>
+   <SubModule name="lanes[2].pipe" Register="1370" Alu="217" Lut="909" MULTALU27X18="2" T_Register="1370(1370)" T_Alu="217(217)" T_Lut="909(909)" T_MULTALU27X18="2(2)"/>
+   <SubModule name="lanes[3].pipe" Register="1370" Alu="217" Lut="925" MULTALU27X18="2" T_Register="1370(1370)" T_Alu="217(217)" T_Lut="925(925)" T_MULTALU27X18="2(2)"/>
+  </SubModule>
+  <SubModule name="voices[0].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[1].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[2].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[3].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[4].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[5].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[6].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[7].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[8].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[9].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[10].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[11].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[12].manual.envelope" Register="69" Alu="170" Lut="234" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="234(234)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[13].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[14].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[15].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[16].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[17].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[18].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[19].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[20].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[21].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[22].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[23].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[24].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[25].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[26].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[27].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[28].manual.envelope" Register="69" Alu="170" Lut="234" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="234(234)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[29].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[30].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[31].manual.envelope" Register="69" Alu="170" Lut="235" MULT27X36="1" T_Register="69(69)" T_Alu="170(170)" T_Lut="235(235)" T_MULT27X36="1(1)"/>
+  <SubModule name="voices[32].score.envelope" Register="67" Alu="154" Lut="165" MULT27X36="1" T_Register="67(67)" T_Alu="154(154)" T_Lut="165(165)" T_MULT27X36="1(1)"/>
+  <SubModule name="wavetable" Lut="388" T_Lut="388(388)"/>
+  <SubModule name="guitar_table" Register="26" Alu="27" Lut="536" MULTALU27X18="1" T_Register="28(26)" T_Alu="27(27)" T_Lut="595(536)" T_MULTALU27X18="1(1)" T_Bsram="6(0)">
+   <SubModule name="body_rom" Register="2" Lut="31" Bsram="3" T_Register="2(2)" T_Lut="31(31)" T_Bsram="3(3)"/>
+   <SubModule name="attack_rom" Lut="28" Bsram="3" T_Lut="28(28)" T_Bsram="3(3)"/>
+  </SubModule>
+ </SubModule>
+ <SubModule name="effects" Register="281" Alu="626" Lut="1209" MULTALU27X18="18" MULT12X12="2" Bsram="90" T_Register="281(281)" T_Alu="626(626)" T_Lut="1263(1209)" T_MULTALU27X18="18(18)" T_MULT12X12="2(2)" T_Bsram="90(90)">
+  <SubModule name="coefficients" Lut="54" T_Lut="54(54)"/>
+ </SubModule>
+ <SubModule name="output_filter" Register="96" Alu="160" Lut="185" T_Register="96(96)" T_Alu="160(160)" T_Lut="185(185)"/>
+ <SubModule name="master" Register="25" Alu="8" Lut="149" MULTALU27X18="1" T_Register="25(25)" T_Alu="8(8)" T_Lut="149(149)" T_MULTALU27X18="1(1)"/>
+ <SubModule name="captured_audio" Register="42" Lut="154" Bsram="128" T_Register="42(42)" T_Lut="154(154)" T_Bsram="128(128)"/>
+ <SubModule name="display" Register="106" Alu="61" Lut="43" T_Register="4383(106)" T_Alu="1221(61)" T_Lut="9829(43)" T_MULTALU27X18="5(0)" T_MULT12X12="9(0)" T_Bsram="59(0)">
+  <SubModule name="analyzer" Register="1306" Alu="174" Lut="2325" MULTALU27X18="5" Bsram="5" T_Register="1306(1306)" T_Alu="174(174)" T_Lut="2325(2325)" T_MULTALU27X18="5(5)" T_Bsram="5(5)"/>
+  <SubModule name="scope" Register="646" Alu="146" Lut="700" Bsram="4" T_Register="646(646)" T_Alu="146(146)" T_Lut="700(700)" T_Bsram="4(4)"/>
+  <SubModule name="game_view" Register="21" T_Register="21(21)"/>
+  <SubModule name="native_panel.panel" Register="2295" Alu="834" Lut="6196" MULT12X12="9" Bsram="2" T_Register="2304(2295)" T_Alu="840(834)" T_Lut="6761(6196)" T_MULT12X12="9(9)" T_Bsram="50(2)">
+   <SubModule name="map_decode" Alu="6" Lut="169" T_Alu="6(6)" T_Lut="169(169)"/>
+   <SubModule name="font" T_Register="9(0)" T_Lut="396(0)" T_Bsram="48(0)">
+    <SubModule name="map" Register="4" Lut="104" Bsram="16" T_Register="4(4)" T_Lut="104(104)" T_Bsram="16(16)"/>
+    <SubModule name="text_pixels" Register="5" Lut="292" Bsram="31" T_Register="5(5)" T_Lut="292(292)" T_Bsram="31(31)"/>
+    <SubModule name="digit_pixels" Bsram="1" T_Bsram="1(1)"/>
+   </SubModule>
+  </SubModule>
+ </SubModule>
+ <SubModule name="usb_status" Register="934" Alu="49" Lut="3020" T_Register="972(934)" T_Alu="49(49)" T_Lut="3104(3020)">
+  <SubModule name="sender" Register="38" Lut="84" T_Register="38(38)" T_Lut="84(84)"/>
+ </SubModule>
+ <SubModule name="bt_status" Register="934" Alu="49" Lut="3021" T_Register="972(934)" T_Alu="49(49)" T_Lut="3105(3021)">
+  <SubModule name="sender" Register="38" Lut="84" T_Register="38(38)" T_Lut="84(84)"/>
+ </SubModule>
+</Module>

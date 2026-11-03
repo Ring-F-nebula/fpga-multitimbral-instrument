@@ -1,0 +1,46 @@
+{
+  "change": "Restore standalone WAX pressure equations and direct onset writes, with staged reads and equivalent parallel display address decode for timing closure",
+  "source_changes": {
+    "dualmode_top.v": {
+      "before": "599dfa28bd7a5fe79395c442eaf82492d0628720605515114b5767cdf3498a82",
+      "after": "41b6c90e257ab6b17f0fb4d6469017c26ae18bb05e822aaca343b1e51e616c5b"
+    },
+    "panel_map_address.v": {
+      "before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "after": "a35888cc8966efa2f8ada418f834e8bd2d6da303b4c967d9e688bcbe7a62d3e3"
+    },
+    "panel_renderer.v": {
+      "before": "1e4cc70cad106491ee1eac1127227b71530aeb1b5c7593d12e36c8cc5f75129a",
+      "after": "7a2dc361861670d833bdf1d61a0861fcb358d7fdea38f5a2749d74c3a06b8f0d"
+    },
+    "wax_pressure.v": {
+      "before": "dfbcd4c527895e1f37359c57baea8186f6ca4abc7384d9f105ab057133115a8c",
+      "after": "c59844e869d6dc9cd8e56d7122d42c020b512ae62fce643c20cc11b471145f79"
+    }
+  },
+  "passed_test_groups": [
+    "tb_dac",
+    "tb_knob5",
+    "tb_knob5_preemption",
+    "tb_knob5_top",
+    "tb_map_equivalence",
+    "tb_pressure_equivalence",
+    "tb_pressure_matrix_top",
+    "tb_volume_path",
+    "tb_wax_control_merge",
+    "tb_wax_host_config",
+    "tb_wax_pressure",
+    "tb_wax_protocol",
+    "tb_wax_settings",
+    "tb_wax_status_merge",
+    "tb_wax_top_merge"
+  ],
+  "bitstream_sha256": "9ef971b6662e68f17f7decc8171b69b5510cbf2c23ba8301733e759e0c358165",
+  "hardware_tested": false,
+  "timing_violated_endpoints": {
+    "Setup": 0,
+    "Hold": 0
+  },
+  "root_cause": "Not established from hardware; this is restoration of the supplied known-working pressure implementation.",
+  "reference_archive_sha256": "6c87a3db61d90366db030b05bc39a6420095e76d7750507611c34a51d234a1c5"
+}

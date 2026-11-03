@@ -1,0 +1,18 @@
+Reading C:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -l tb_wax_protocol.transcript.log -wlf tb_wax_protocol.wlf tb_wax_protocol -do "onerror {quit -code 1}; run -all; quit -f" 
+# Start time: 23:34:35 on Nov 02,2026
+# Loading sv_std.std
+# Loading work.tb_wax_protocol
+# Loading work.wax_uart_rx
+# Loading work.wax_packet
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS wax_protocol: actual 8N1 wire, BE24 16 channels, checksum/tail/model rejection, ACK, byte-gap and break recovery
+# ** Note: $finish    : X:/sim/tb_wax_protocol.sv(31)
+#    Time: 276500 ns  Iteration: 1  Instance: /tb_wax_protocol
+# End time: 23:34:35 on Nov 02,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

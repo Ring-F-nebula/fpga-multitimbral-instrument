@@ -1,0 +1,13 @@
+if(page_q==0 && instrument_q==0 && bank_q==1'd0 && x>=209 && x<241 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd0 && x>=307 && x<339 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd0 && x>=503 && x<535 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd0 && x>=600 && x<632 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd0 && x>=698 && x<730 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd0 && x>=894 && x<926 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd0 && x>=976 && x<1008 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd1 && x>=288 && x<320 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd1 && x>=376 && x<408 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd1 && x>=464 && x<496 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd1 && x>=640 && x<672 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd1 && x>=728 && x<760 && y>=472 && y<500)ink=24'hffffff;
+if(page_q==0 && instrument_q==0 && bank_q==1'd1 && x>=904 && x<936 && y>=472 && y<500)ink=24'hffffff;
