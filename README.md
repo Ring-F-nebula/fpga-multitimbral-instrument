@@ -184,7 +184,7 @@ python mobile/app/android/build.py
 
 ## 验证
 
-FPGA 整理前的 SPI 集成版已完成 18 组 RTL 测试及完整布局布线。当前仓库保留 17 组功能测试；使用历史压力实现作为对照的旧版本测试已移除。当前生产 RTL、ROM 与约束逐字节保留，校验值及打包检查记录见 [`verification.json`](verification.json)。整机模拟输出和传感器联调与数字验证分别记录。
+FPGA 整理前的 SPI 集成版已完成 18 组 RTL 测试及完整布局布线。当前仓库保留 17 组功能测试。当前生产 RTL、ROM 与约束逐字节保留，校验值及打包检查记录见 [`verification.json`](verification.json)。整机模拟输出和传感器联调与数字验证分别记录。
 
 FPGA 仿真需 ModelSim 和 Gowin GW5A 原语库，在仓库根目录执行：
 
