@@ -1,4 +1,5 @@
-// Optional binding for legacy audio-only top tests; real LCD pixels and game integration are tested separately.
+`timescale 1ns/1ps
+// Offline LCD and PLL substitutes for integration regressions.
 module lcd_test_stub #(parameter integer SHOW_FSR=0,parameter integer PANEL_UI=0)(input clk,audio_clk,sample_tick,
     input fsr_ready,fsr_fault,fsr_calibrating,input [13:0] fsr_peak,input [15:0] fsr_keys,
     input [13:0] fsr_delta,fsr_threshold,input [15:0] fsr_cal_mask,
@@ -36,90 +37,9 @@ endmodule
 module lcd_stub_scope;
     reg audio_toggle=0;
 endmodule
-config cfg_tb_integration;
-    design work.tb_integration;
-    default liblist work;
-    instance tb_integration.dut.display use work.lcd_test_stub;
-    instance tb_integration.dut.clock_gen use work.merged_clock_test_stub;
-    instance tb_integration.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig
-config cfg_tb_touch_top;
-    design work.tb_touch_top;
-    default liblist work;
-    instance tb_touch_top.dut.display use work.lcd_test_stub;
-    instance tb_touch_top.dut.clock_gen use work.merged_clock_test_stub;
-    instance tb_touch_top.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig
-
-config cfg_tb_laser_merge;
- design work.tb_laser_merge;
- default liblist work;
- instance tb_laser_merge.dut.display use work.lcd_test_stub;
-    instance tb_laser_merge.dut.clock_gen use work.merged_clock_test_stub;
-    instance tb_laser_merge.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig
-
-config cfg_tb_touch_bluetooth_merge;
- design work.tb_touch_bluetooth_merge;
- default liblist work;
- instance tb_touch_bluetooth_merge.dut.display use work.lcd_test_stub;
-    instance tb_touch_bluetooth_merge.dut.clock_gen use work.merged_clock_test_stub;
-    instance tb_touch_bluetooth_merge.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig
-
-config cfg_tb_fsr_top;
-    design work.tb_fsr_top;
-    default liblist work;
-    instance tb_fsr_top.dut.display use work.lcd_test_stub;
-    instance tb_fsr_top.dut.clock_gen use work.merged_clock_test_stub;
-    instance tb_fsr_top.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig
-
-config cfg_tb_fsr_guard_top;
-    design work.tb_fsr_guard_top;
-    default liblist work;
-    instance tb_fsr_guard_top.dut.display use work.lcd_test_stub;
-    instance tb_fsr_guard_top.dut.clock_gen use work.merged_clock_test_stub;
-    instance tb_fsr_guard_top.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig
-
-// Functional integration clock model. The actual Gowin PLL is separately tested
-// by tb_merged_clock with the vendor primitive model and no substitution.
-`timescale 1ns/1ps
 module merged_clock_test_stub(input clkin,output reg clkout=0,output reg locked=0);
  initial begin
   repeat(50) @(posedge clkin);locked=1;
   forever #9.523809524 clkout=~clkout;
  end
 endmodule
-
-config cfg_tb_bt_audio;
- design work.tb_bt_audio;
- default liblist work;
- instance tb_bt_audio.dut.display use work.lcd_test_stub;
- instance tb_bt_audio.dut.clock_gen use work.merged_clock_test_stub;
- instance tb_bt_audio.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig
-
-config cfg_tb_game_bluetooth;
- design work.tb_game_bluetooth;
- default liblist work;
- instance tb_game_bluetooth.dut.display use work.lcd_test_stub;
- instance tb_game_bluetooth.dut.clock_gen use work.merged_clock_test_stub;
- instance tb_game_bluetooth.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig
-
-config cfg_tb_game_top;
- design work.tb_game_top;
- default liblist work;
- instance tb_game_top.dut.display use work.lcd_test_stub;
- instance tb_game_top.dut.clock_gen use work.merged_clock_test_stub;
- instance tb_game_top.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig
-
-config cfg_tb_fx_stop_top;
- design work.tb_fx_stop_top;default liblist work;
- instance tb_fx_stop_top.dut.display use work.lcd_test_stub;
- instance tb_fx_stop_top.dut.clock_gen use work.merged_clock_test_stub;
- instance tb_fx_stop_top.dut.fsr_adc.adc_i use work.fsr_adc_test_stub;
-endconfig

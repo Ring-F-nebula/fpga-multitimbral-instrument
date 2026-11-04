@@ -1,0 +1,12 @@
+[
+  {
+    "file": "JohannSebastianBach_Air.xml",
+    "url": "https://raw.githubusercontent.com/opensheetmusicdisplay/opensheetmusicdisplay/1b9f21aa61da1b3fc6893554c4e2c60e6ac67124/test/data/JohannSebastianBach_Air.xml",
+    "sha256": "c9bdaebde9140fee632ea97c6c7f763978c6663f3e5e5b81d468b0193696da37"
+  },
+  {
+    "file": "Mozart_AnChloe.xml",
+    "url": "https://raw.githubusercontent.com/opensheetmusicdisplay/opensheetmusicdisplay/1b9f21aa61da1b3fc6893554c4e2c60e6ac67124/test/data/Mozart_AnChloe.xml",
+    "sha256": "937e753a4b194aec204d6b52f87f092b19b87c6d52375ef314af2fd3535f5168"
+  }
+]

@@ -29,7 +29,7 @@ for folder in ("src","sim"):
             sources[p.relative_to(ROOT).as_posix()]=hashlib.sha256(p.read_bytes()).hexdigest()
 vsim=shutil.which("vsim")
 if not vsim:
-    vsim="D:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/vsim.exe"
+    vsim="vsim.exe"
 BIN=Path(os.environ.get("MODELSIM_BIN") or str(Path(vsim).parent))
 if not (BIN/"vsim.exe").exists(): raise SystemExit("Set MODELSIM_BIN to the folder containing vsim.exe")
 SIM_OPTIONS=["-voptargs=+acc"] if os.environ.get("SIM_DEBUG_ACCESS")=="1" else []
@@ -40,7 +40,7 @@ def run(name,args):
         print('TOOL EXIT',name,p.returncode,p.stdout,p.stderr); raise SystemExit(f"FAILED: {name} {args}")
     return p.stdout+p.stderr
 run("vlib.exe",["work"])
-vendor=Path(os.environ.get("GOWIN_PRIMITIVES",r"D:/Gowin/Gowin_V1.9.11.03_Education_x64/IDE/simlib/gw5a/prim_sim.v"))
+vendor=Path(os.environ.get("GOWIN_PRIMITIVES",""))
 if not vendor.exists(): raise SystemExit("Set GOWIN_PRIMITIVES to Gowin GW5A prim_sim.v")
 run("vlog.exe",[vendor])
 compile_inputs=[*sorted((SIM/'src').glob('*.v')),*sorted((SIM/'sim').glob('*.sv'))]
@@ -49,10 +49,13 @@ for offset in range(0,len(compile_inputs),20):
     compile_log+=run('vlog.exe',['-sv','+incdir+src',*compile_inputs[offset:offset+20]])
 (REPORTS/"compile.log").write_text(compile_log,encoding="utf-8")
 results={}
-selected=set(sys.argv[1:]) or set(json.loads(Path(__file__).with_name('release_tests.json').read_text()))
+requested=set(sys.argv[1:])
+selected=requested or set(json.loads(Path(__file__).with_name('release_tests.json').read_text()))
+available={p.stem for p in (ROOT/'sim').glob('tb_*.sv')}
+if selected-available:raise SystemExit('Unknown test names: '+', '.join(sorted(selected-available)))
 def run_test(path):
     tb=path.stem
-    sim_top="cfg_"+tb if os.environ.get("SIM_LCD_STUB")=="1" and tb in {"tb_knob5_top","tb_pressure_matrix_top","tb_wax_top_merge","tb_guitar_control","tb_report_latency","tb_competition_top","tb_ui_actions","tb_volume_path","tb_practice_exit","tb_touch_spectrum_top","tb_integration","tb_touch_top","tb_laser_merge","tb_touch_bluetooth_merge","tb_fsr_top","tb_fsr_guard_top","tb_bt_audio","tb_game_bluetooth","tb_game_top","tb_fsr_latency","tb_panel_regression","tb_fsr_response","tb_fx_stop_top","tb_native_top"} else tb
+    sim_top="cfg_"+tb if os.environ.get("SIM_LCD_STUB")=="1" and tb in {"tb_laser_spi_main","tb_knob5_top","tb_pressure_matrix_top","tb_wax_top_merge","tb_guitar_control","tb_report_latency","tb_competition_top","tb_ui_actions","tb_volume_path","tb_practice_exit","tb_touch_spectrum_top","tb_integration","tb_touch_top","tb_laser_merge","tb_touch_bluetooth_merge","tb_fsr_top","tb_fsr_guard_top","tb_bt_audio","tb_game_bluetooth","tb_game_top","tb_fsr_latency","tb_panel_regression","tb_fsr_response","tb_fx_stop_top","tb_native_top"} else tb
     if tb=="tb_native_display":
         sim_top="cfg_tb_native_display"
         def capture(view):
@@ -77,7 +80,7 @@ with ThreadPoolExecutor(max_workers=int(os.environ.get('SIM_JOBS','1'))) as pool
 for pattern in ['*.raw','screen_*.ppm','*.csv']:
     for artifact in SIM.glob(pattern):shutil.copy2(artifact,REPORTS/artifact.name)
 report=dict(tested_at=datetime.now(timezone.utc).isoformat(),source_sha256=sources,
-    simulator=str(BIN),simulator_options=SIM_OPTIONS,legacy_audio_display_stub=os.environ.get("SIM_LCD_STUB")=="1",snapshot=str(SIM),tests=results,failed_tests=failures,hardware_tested=False)
+    simulator=str(BIN),simulator_options=SIM_OPTIONS,integration_display_stub=os.environ.get("SIM_LCD_STUB")=="1",snapshot=str(SIM),tests=results,failed_tests=failures,hardware_tested=False)
 (REPORTS/"simulation_summary.json").write_text(json.dumps(report,indent=2),encoding="utf-8")
 print("Simulation logs:",REPORTS)
 if failures:raise SystemExit('Failed test groups: '+', '.join(failures))

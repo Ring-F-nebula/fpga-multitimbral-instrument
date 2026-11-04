@@ -1,13 +1,27 @@
-# Local EDA and simulation working directories
-/firmware/work/
-/firmware/impl/
-/firmware/temp/
-/firmware/backup/
-/firmware/*.gprj.user
+# FPGA build and simulation output
+firmware/work/
+firmware/reports/
+firmware/impl/
+*.wlf
+*.vcd
+transcript
+modelsim.ini
+
+# App dependencies and generated APK output
+node_modules/
+mobile/build/
+*.apk
+*.class
+*.dex
+
+# Local credentials and editor/cache files
+*.jks
+*.keystore
+.env
+.env.*
 __pycache__/
 *.py[cod]
-.vscode/
-.idea/
 .DS_Store
 Thumbs.db
-# Shipped ROM files, bitstreams and reports are intentionally tracked.
+.idea/
+.vscode/

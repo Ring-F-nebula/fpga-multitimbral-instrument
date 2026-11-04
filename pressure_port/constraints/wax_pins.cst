@@ -1,6 +1,0 @@
-// Merge these four lines into the MAIN project's constraints after conflict checks.
-// Header J14-39 -> FPGA R14; J14-40 -> FPGA P14, Dock 31005 Rev1.3.
-IO_LOC "WAX_RX" R14;
-IO_PORT "WAX_RX" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
-IO_LOC "WAX_TX" P14;
-IO_PORT "WAX_TX" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=4 BANK_VCCIO=3.3;

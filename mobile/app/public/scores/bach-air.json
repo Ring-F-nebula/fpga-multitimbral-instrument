@@ -1,0 +1,145 @@
+{
+  "format": "musicxml",
+  "quantized": true,
+  "excerpt": true,
+  "description": "第一谱表首个声部的前32事件，作为慢速单旋律练习片段",
+  "id": "bach-air",
+  "name": "巴赫 · G弦上的咏叹调",
+  "bpm": 80,
+  "score": [
+    {
+      "note": 78,
+      "beats": 4.5
+    },
+    {
+      "note": 83,
+      "beats": 0.25
+    },
+    {
+      "note": 79,
+      "beats": 0.25
+    },
+    {
+      "note": 76,
+      "beats": 0.25
+    },
+    {
+      "note": 74,
+      "beats": 0.25
+    },
+    {
+      "note": 73,
+      "beats": 0.25
+    },
+    {
+      "note": 74,
+      "beats": 0.25
+    },
+    {
+      "note": 73,
+      "beats": 1
+    },
+    {
+      "note": 69,
+      "beats": 1
+    },
+    {
+      "note": 81,
+      "beats": 2.25
+    },
+    {
+      "note": 78,
+      "beats": 0.25
+    },
+    {
+      "note": 72,
+      "beats": 0.25
+    },
+    {
+      "note": 71,
+      "beats": 0.25
+    },
+    {
+      "note": 76,
+      "beats": 0.25
+    },
+    {
+      "note": 75,
+      "beats": 0.25
+    },
+    {
+      "note": 81,
+      "beats": 0.25
+    },
+    {
+      "note": 79,
+      "beats": 0.25
+    },
+    {
+      "note": 79,
+      "beats": 2.25
+    },
+    {
+      "note": 76,
+      "beats": 0.25
+    },
+    {
+      "note": 71,
+      "beats": 0.25
+    },
+    {
+      "note": 69,
+      "beats": 0.25
+    },
+    {
+      "note": 74,
+      "beats": 0.25
+    },
+    {
+      "note": 73,
+      "beats": 0.25
+    },
+    {
+      "note": 79,
+      "beats": 0.25
+    },
+    {
+      "note": 78,
+      "beats": 0.25
+    },
+    {
+      "note": 78,
+      "beats": 1.5
+    },
+    {
+      "note": 80,
+      "beats": 0.25
+    },
+    {
+      "note": 81,
+      "beats": 0.25
+    },
+    {
+      "note": 74,
+      "beats": 0.5
+    },
+    {
+      "note": 74,
+      "beats": 0.25
+    },
+    {
+      "note": 76,
+      "beats": 0.25
+    },
+    {
+      "note": 78,
+      "beats": 0.5
+    }
+  ],
+  "sourceUrl": "https://raw.githubusercontent.com/opensheetmusicdisplay/opensheetmusicdisplay/1b9f21aa61da1b3fc6893554c4e2c60e6ac67124/test/data/JohannSebastianBach_Air.xml",
+  "sourceSHA256": "c9bdaebde9140fee632ea97c6c7f763978c6663f3e5e5b81d468b0193696da37",
+  "sourceRights": [
+    ""
+  ],
+  "attribution": "Practice excerpt from OpenSheetMusicDisplay public MusicXML example, pinned commit 1b9f21aa61da1b3fc6893554c4e2c60e6ac67124. Source rights retained."
+}

@@ -1,0 +1,145 @@
+{
+  "format": "musicxml",
+  "quantized": false,
+  "excerpt": true,
+  "description": "第一谱表首个声部的前32事件，作为慢速单旋律练习片段",
+  "id": "mozart-chloe",
+  "name": "莫扎特 · 致克洛伊",
+  "bpm": 80,
+  "score": [
+    {
+      "note": null,
+      "beats": 1
+    },
+    {
+      "note": null,
+      "beats": 4
+    },
+    {
+      "note": null,
+      "beats": 4
+    },
+    {
+      "note": null,
+      "beats": 4
+    },
+    {
+      "note": null,
+      "beats": 4
+    },
+    {
+      "note": null,
+      "beats": 4
+    },
+    {
+      "note": null,
+      "beats": 2
+    },
+    {
+      "note": null,
+      "beats": 1
+    },
+    {
+      "note": 67,
+      "beats": 0.5
+    },
+    {
+      "note": 68,
+      "beats": 0.5
+    },
+    {
+      "note": 70,
+      "beats": 1
+    },
+    {
+      "note": 70,
+      "beats": 1
+    },
+    {
+      "note": 70,
+      "beats": 1
+    },
+    {
+      "note": 70,
+      "beats": 1
+    },
+    {
+      "note": 70,
+      "beats": 1.5
+    },
+    {
+      "note": 75,
+      "beats": 0.5
+    },
+    {
+      "note": 75,
+      "beats": 1
+    },
+    {
+      "note": null,
+      "beats": 1
+    },
+    {
+      "note": 67,
+      "beats": 1.5
+    },
+    {
+      "note": 70,
+      "beats": 0.5
+    },
+    {
+      "note": 70,
+      "beats": 1
+    },
+    {
+      "note": null,
+      "beats": 1
+    },
+    {
+      "note": 63,
+      "beats": 2.5
+    },
+    {
+      "note": 65,
+      "beats": 0.5
+    },
+    {
+      "note": 67,
+      "beats": 0.5
+    },
+    {
+      "note": 68,
+      "beats": 0.5
+    },
+    {
+      "note": 67,
+      "beats": 1
+    },
+    {
+      "note": 65,
+      "beats": 1
+    },
+    {
+      "note": null,
+      "beats": 1
+    },
+    {
+      "note": 67,
+      "beats": 0.5
+    },
+    {
+      "note": 68,
+      "beats": 0.5
+    },
+    {
+      "note": 70,
+      "beats": 1
+    }
+  ],
+  "sourceUrl": "https://raw.githubusercontent.com/opensheetmusicdisplay/opensheetmusicdisplay/1b9f21aa61da1b3fc6893554c4e2c60e6ac67124/test/data/Mozart_AnChloe.xml",
+  "sourceSHA256": "937e753a4b194aec204d6b52f87f092b19b87c6d52375ef314af2fd3535f5168",
+  "sourceRights": [
+    "Copyright © 2002 Recordare LLC"
+  ],
+  "attribution": "Practice excerpt from OpenSheetMusicDisplay public MusicXML example, pinned commit 1b9f21aa61da1b3fc6893554c4e2c60e6ac67124. Source rights retained."
+}

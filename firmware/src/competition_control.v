@@ -1,5 +1,6 @@
 // One authoritative hardware state for local touch and validated UART writes.
-module competition_control #(parameter integer ENABLE_PRESSURE=0)(input clk,reset_n,tick,input [31:0] touch_keys,serial_keys,bluetooth_keys,
+module competition_control #(parameter integer ENABLE_PRESSURE=0,ENABLE_LASER=0)(input clk,reset_n,tick,input [31:0] touch_keys,serial_keys,bluetooth_keys,
+ input [31:0] laser_keys,
  input [15:0] pressure_keys,input [143:0] pressure_gains,
  input commit,input [7:0] id,value,effect_flags,input ui_stop,ui_live,record_playing,input [2:0] axis_valid,
  input signed [8:0] axis_bend,input [8:0] axis_gain,input [6:0] axis_vibrato,
@@ -17,6 +18,7 @@ module competition_control #(parameter integer ENABLE_PRESSURE=0)(input clk,rese
  output reg [7:0] upload_expected=0,upload_received=0,output reg upload_ready=0,upload_matrix_ok=0,
  input [6:0] song_read_address,output reg [7:0] song_note=255,song_duration=4);
  reg [31:0] held=0,previous_touch=0,previous_keys=0,blocked_touch=0,blocked_serial=0,blocked_bluetooth=0;
+ reg [31:0] blocked_laser=0;
  reg [255:0] midi=0;reg [287:0] gains=0;reg [4:0] map_index=0;
  reg [7:0] upload_index=0,upload_note=255,upload_duration=4,upload_crc=0;
  reg upload_matrix_candidate=1;
@@ -24,7 +26,8 @@ module competition_control #(parameter integer ENABLE_PRESSURE=0)(input clk,rese
  always @(posedge clk)begin {song_note,song_duration}<=song_memory[song_read_address];end
  reg [15:0] blocked_pressure=0;reg [31:0] previous_other=0;
  wire [15:0] allowed_pressure=ENABLE_PRESSURE?(pressure_keys&~blocked_pressure):16'd0;
- wire [31:0] other_physical=(touch_keys&~blocked_touch)|(serial_keys&~blocked_serial)|(bluetooth_keys&~blocked_bluetooth);
+ wire [31:0] allowed_laser=ENABLE_LASER?(laser_keys&~blocked_laser):32'd0;
+ wire [31:0] other_physical=allowed_laser|(touch_keys&~blocked_touch)|(serial_keys&~blocked_serial)|(bluetooth_keys&~blocked_bluetooth);
  wire [31:0] physical_keys=other_physical|{16'd0,allowed_pressure};wire [31:0] raw=hold_mode?held:physical_keys;
  wire [31:0] test_keys;integer i;
  assign performance_keys=stopped?32'd0:test_count!=0?test_keys:raw;
@@ -40,13 +43,13 @@ module competition_control #(parameter integer ENABLE_PRESSURE=0)(input clk,rese
   clear_audio<=0;practice_command_valid<=0;record_command_valid<=0;audio_command_valid<=0;
   if(!reset_n)begin
    volume<=8;attack<=0;decay<=5;release_time<=5;sustain<=160;instrument<=0;guitar_chord<=0;guitar_analysis<=1;stopped<=0;held<=0;hold_mode<=0;
-   blocked_pressure<=0;previous_other<=0;previous_touch<=0;previous_keys<=0;blocked_touch<=0;blocked_serial<=0;blocked_bluetooth<=0;test_count<=0;selected<=0;test_muted<=0;bend<=0;gain<=256;vibrato<=0;vibrato_override<=0;bpm<=120;song<=0;
+   blocked_pressure<=0;previous_other<=0;previous_touch<=0;previous_keys<=0;blocked_touch<=0;blocked_laser<=0;blocked_serial<=0;blocked_bluetooth<=0;test_count<=0;selected<=0;test_muted<=0;bend<=0;gain<=256;vibrato<=0;vibrato_override<=0;bpm<=120;song<=0;
    upload_ready<=0;upload_matrix_ok<=0;upload_matrix_candidate<=1;upload_expected<=0;upload_received<=0;record_query<=0;newest_voice<=0;old_gain<=256;mapping_reset_done<=0;
    for(i=0;i<32;i=i+1)begin midi[i*8+:8]<=60+i;gains[i*9+:9]<=256;end
   end else begin
    previous_touch<=physical_keys;previous_keys<=performance_keys;previous_other<=other_physical;old_gain<=gain;
    if(stopped)blocked_pressure<=pressure_keys;else blocked_pressure<=blocked_pressure&pressure_keys;
-   if(stopped)begin blocked_touch<=touch_keys;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;held<=0;end else begin blocked_touch<=blocked_touch&touch_keys;blocked_serial<=blocked_serial&serial_keys;blocked_bluetooth<=blocked_bluetooth&bluetooth_keys;end
+   if(stopped)begin blocked_touch<=touch_keys;blocked_laser<=ENABLE_LASER?laser_keys:32'd0;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;held<=0;end else begin blocked_touch<=blocked_touch&touch_keys;blocked_laser<=ENABLE_LASER?(blocked_laser&laser_keys):32'd0;blocked_serial<=blocked_serial&serial_keys;blocked_bluetooth<=blocked_bluetooth&bluetooth_keys;end
    if(hold_mode&&!stopped)held<=held^(physical_keys&~previous_touch);
    for(i=0;i<32;i=i+1)begin
     if(performance_keys[i]&&!previous_keys[i])begin newest_voice<=i;gains[i*9+:9]<=gain;end
@@ -65,21 +68,21 @@ module competition_control #(parameter integer ENABLE_PRESSURE=0)(input clk,rese
    else if(ui_live)begin stopped<=0;clear_audio<=stopped||test_count!=0;test_count<=0;test_muted<=0;if(record_playing===1'b1)begin record_command_valid<=1;record_command<=0;end end
    if(commit)case(id)
     1:attack<=value[3:0];2:decay<=value[3:0];3:sustain<=value;4:release_time<=value[3:0];5:volume<=value[3:0];
-    8'h23:begin instrument<=value[1:0];clear_audio<=1;held<=0;if(value[1:0]==1)hold_mode<=0;blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;end
+    8'h23:begin instrument<=value[1:0];clear_audio<=1;held<=0;if(value[1:0]==1)hold_mode<=0;blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_laser<=ENABLE_LASER?laser_keys:32'd0;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;end
     8'h24:bend<=($signed({1'b0,value})-9'sd100)*2;
     8'h25:gain<=value==255?9'd256:{1'b0,value};
     8'h26:begin vibrato<=value[6:0];vibrato_override<=1;end
-    8'h27:begin test_count<=value[5:0];test_muted<=0;selected<=0;held<=0;blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;clear_audio<=1;end
+    8'h27:begin test_count<=value[5:0];test_muted<=0;selected<=0;held<=0;blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_laser<=ENABLE_LASER?laser_keys:32'd0;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;clear_audio<=1;end
     8'h28:selected<=value[4:0];8'h29:test_muted<=value[0];
     8'h2a:begin hold_mode<=value[0];held<=value[0]?physical_keys:32'd0;end
-    8'h2b:begin held<=0;blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;clear_audio<=1;end
+    8'h2b:begin held<=0;blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_laser<=ENABLE_LASER?laser_keys:32'd0;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;clear_audio<=1;end
     8'h2c:bpm<=value;8'h2d:begin song<=value[1:0];practice_command_valid<=1;practice_command<=0;end
     8'h2e:begin practice_command_valid<=1;practice_command<=value[1:0];if(value==1)begin stopped<=0;clear_audio<=1;held<=0;hold_mode<=0;test_count<=0;test_muted<=0;end end
     8'h30:map_index<=value[4:0];8'h31:begin midi[map_index*8+:8]<=value;mapping_reset_done<=0;end
     8'h32:begin
      for(i=0;i<32;i=i+1)midi[i*8+:8]<=60+i;
      mapping_reset_done<=1;selected<=0;map_index<=0;held<=0;hold_mode<=0;clear_audio<=1;
-     blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;
+     blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_laser<=ENABLE_LASER?laser_keys:32'd0;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;
     end
     8'h40:begin upload_expected<=value;upload_received<=0;upload_ready<=0;upload_matrix_ok<=0;upload_matrix_candidate<=1;upload_crc<=value;upload_index<=0;end
     8'h41:upload_index<=value;
@@ -99,7 +102,7 @@ module competition_control #(parameter integer ENABLE_PRESSURE=0)(input clk,rese
      if(value==1)begin
       practice_command_valid<=1;practice_command<=0;
       stopped<=0;clear_audio<=1;held<=0;hold_mode<=0;test_count<=0;test_muted<=0;
-      blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;
+      blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_laser<=ENABLE_LASER?laser_keys:32'd0;blocked_serial<=serial_keys;blocked_bluetooth<=bluetooth_keys;
      end
      if(value==2)begin stopped<=0;clear_audio<=1;held<=0;hold_mode<=0;test_count<=0;practice_command_valid<=1;practice_command<=0;end
     end
@@ -107,7 +110,7 @@ module competition_control #(parameter integer ENABLE_PRESSURE=0)(input clk,rese
     8'h1c:vibrato_override<=0;
     8'h51:record_query[7:0]<=value;8'h52:record_query[8]<=value[0];
     8'h53:begin bend<=0;gain<=256;vibrato<=0;vibrato_override<=0;end
-    8'h54:begin guitar_chord<=value[2:0];held<=0;hold_mode<=0;blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;end
+    8'h54:begin guitar_chord<=value[2:0];held<=0;hold_mode<=0;blocked_pressure<=pressure_keys;blocked_touch<=touch_keys;blocked_laser<=ENABLE_LASER?laser_keys:32'd0;end
     // Legacy layout command remains accepted; the analyzer is now permanent.
     8'h55:guitar_analysis<=1'b1;
     8'h1f:begin stopped<=value[0];clear_audio<=1;held<=0;test_count<=0;end

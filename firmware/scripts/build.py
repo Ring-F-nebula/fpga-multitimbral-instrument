@@ -7,11 +7,11 @@ parser.add_argument('--revision', choices=['B'], default='B')
 parser.add_argument('--pnr-only', action='store_true', help='Reuse cached synthesis only when all synthesis inputs are byte-identical')
 parser.add_argument('--work-name',default='build',help='Isolated ASCII build directory prefix')
 parser.add_argument('--report-name',default='B',help='Isolated ASCII report directory name')
-parser.add_argument('--route-option',type=int,choices=[0,1,2],default=0)
-parser.add_argument('--place-option',type=int,choices=[0,1,2,3,4],default=2)
+parser.add_argument('--route-option',type=int,choices=[0,1,2],default=2)
+parser.add_argument('--place-option',type=int,choices=[0,1,2,3,4],default=1)
 parser.add_argument('--timing-driven',type=int,choices=[0,1],default=1)
 parser.add_argument('--collect-only', action='store_true', help='Export a completed local build only after verifying its staged sources')
-parser.add_argument('--eda', default=r'D:\Gowin\Gowin_V1.9.11.03_Education_x64\IDE\bin\gw_sh.exe')
+parser.add_argument('--eda', default=shutil.which('gw_sh.exe') or shutil.which('gw_sh') or '')
 args = parser.parse_args()
 if not args.collect_only and not pathlib.Path(args.eda).is_file():
     sys.exit('gw_sh.exe not found. Supply --eda with its installed path.')
@@ -23,7 +23,7 @@ if args.collect_only:
     current={p.name:p.read_bytes() for p in (ROOT/'src').iterdir() if p.is_file()}
     staged={p.name:p.read_bytes() for p in (stage/'src').iterdir() if p.is_file()}
     if current!=staged: sys.exit('Completed build sources differ from delivered sources')
-    source=stage/'bitstream'/('laser_touch_bt_fsr_'+args.revision+'.fs')
+    source=stage/'bitstream'/('multimodal_instrument_'+args.revision+'.fs')
     if not source.is_file(): sys.exit('No completed bitstream to collect')
     if 'Bitstream generation completed' not in (reports/'build.log').read_text(encoding='utf-8'):
         sys.exit('Completed Gowin bitstream generation not recorded')
@@ -37,7 +37,7 @@ if args.collect_only:
     print('COLLECTED:',target)
     sys.exit(0)
 if args.pnr_only:
-    cache=stage/'impl/gwsynthesis/laser_touch_bt_fsr_B.vg'
+    cache=stage/'impl/gwsynthesis/multimodal_instrument_B.vg'
     if not cache.is_file():sys.exit('No cached synthesis netlist')
     for source in (ROOT/'src').iterdir():
         if not source.is_file() or source.suffix=='.sdc':continue
@@ -78,7 +78,7 @@ try:
             dest.parent.mkdir(parents=True, exist_ok=True)
             if dest.exists(): dest.chmod(stat.S_IWRITE | stat.S_IREAD)
             shutil.copy2(p, dest)
-    source = stage / 'bitstream' / ('laser_touch_bt_fsr_' + args.revision + '.fs')
+    source = stage / 'bitstream' / ('multimodal_instrument_' + args.revision + '.fs')
     if code or not source.exists():
         sys.exit('Build failed (tool exit '+str(code)+'). Inspect '+str(reports/'build.log'))
     target = (ROOT/'bitstream' if args.report_name=='B' else reports/'bitstream') / source.name

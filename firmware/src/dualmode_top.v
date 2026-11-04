@@ -2,13 +2,16 @@
 module dualmode_top #(
     // Legacy parameters preserve project compatibility. This version uses
     // local touch, USB UART, Bluetooth and the independent digital WAX UART.
-    // Legacy analog/laser paths stay inactive; five EC11 controls are enabled.
+    // Legacy analog paths stay inactive; independent AD7606 SPI is enabled.
     parameter integer ENABLE_LASER_INPUTS=0,
     parameter integer ENABLE_RC_PADS=0,
     parameter integer ENABLE_FSR_INPUTS=0,
     parameter integer ENABLE_ENCODER=1,
     parameter integer TOUCH_I2C_QUARTER=17,
-    parameter integer PANEL_UI=1
+    parameter integer PANEL_UI=1,
+    parameter integer ENABLE_AD7606=1,
+    parameter integer LASER_ADC_RESET_CYCLES=2500,
+    parameter integer LASER_ADC_SETTLE_CYCLES=2500000
 )(
     input wire clk_50m,
     input wire key0_n, key1_n, UART_RX, BT_RX,
@@ -16,6 +19,8 @@ module dualmode_top #(
     input wire WAX_RX,output wire WAX_TX,
     input wire [4:0] enc_a_n, enc_b_n,input wire enc_sw_n,
     input wire [6:0] beam_broken,
+    input wire AD7606_DOUTA,AD7606_BUSY,AD7606_FRSTDATA,
+    output wire AD7606_BYTE_SEL,AD7606_RESET,AD7606_CONVST,AD7606_CS_N,AD7606_SCLK,
     input wire soft_touch,bend_touch,timbre_touch,fx_touch,
     output wire HP_BCK, HP_WS, HP_DIN, PA_EN, UART_TX,
     output wire [7:0] lcd_r,lcd_g,lcd_b,
@@ -28,6 +33,28 @@ module dualmode_top #(
     always @(posedge lcd_sysclk)clk<=~clk;
     reg [7:0] powerup=0;always @(posedge clk)if(!clock_locked)powerup<=0;else if(!(&powerup))powerup<=powerup+1'b1;
     wire reset_n=&powerup;
+    // Independent 50 MHz ADC receiver; held samples cross to 26.25 MHz
+    // through the detector's two-stage event/status synchronizers.
+    wire [127:0] laser_samples;
+    wire laser_toggle,laser_online,laser_fault,laser_adc_frame;
+    wire [6:0] laser_notes,laser_armed;
+    wire [15:0] laser_keys16;
+    wire [31:0] laser_keys={16'd0,laser_keys16};
+    wire laser_frame;
+    assign AD7606_BYTE_SEL=1'b0;
+    generate if(ENABLE_AD7606!=0)begin:adc_laser
+      ad7606_spi #(.RESET_CYCLES(LASER_ADC_RESET_CYCLES),.SETTLE_CYCLES(LASER_ADC_SETTLE_CYCLES),.USE_BUSY(0)) receiver(
+        .clk(clk_50m),.reset_n(reset_n&&clock_locked),.busy_async(AD7606_BUSY),.first_async(AD7606_FRSTDATA),
+        .data_async({8'd0,AD7606_DOUTA,7'd0}),.adc_reset(AD7606_RESET),.convst(AD7606_CONVST),.cs_n(AD7606_CS_N),.rd_n(AD7606_SCLK),
+        .samples(laser_samples),.frame_toggle(laser_toggle),.frame_valid(laser_adc_frame),.online(laser_online),.fault(laser_fault));
+      ad7606_laser_keys #(.STALE_CYCLES(31500)) detector(
+        .clk(clk),.reset_n(reset_n),.samples_async(laser_samples),.toggle_async(laser_toggle),.online_async(laser_online),
+        .notes(laser_notes),.armed(laser_armed),.keys(laser_keys16),.frame_valid(laser_frame));
+    end else begin:no_adc_laser
+      assign AD7606_RESET=0;assign AD7606_CONVST=0;assign AD7606_CS_N=1;assign AD7606_SCLK=1;
+      assign laser_samples=0;assign laser_toggle=0;assign laser_adc_frame=0;assign laser_online=0;assign laser_fault=0;
+      assign laser_notes=0;assign laser_armed=0;assign laser_keys16=0;assign laser_frame=0;
+    end endgenerate
     wire press0,press1;button_press key0(clk,key0_n,press0);button_press key1(clk,key1_n,press1);
     wire signed [15:0] pcm;wire sample_tick;
     pt8211_tx dac(clk,pcm,HP_BCK,HP_WS,HP_DIN,sample_tick);
@@ -99,7 +126,7 @@ module dualmode_top #(
       assign wax_telemetry[(66+wp*2)*8+:16]={7'd0,wax_gains[wp*9+:9]};
     end endgenerate
     wire [23:0] wax_selected_raw=wax_raw[selected[3:0]*24+:24],wax_selected_base=wax_baselines[selected[3:0]*24+:24],wax_selected_threshold=wax_thresholds[selected[3:0]*24+:24];
-    competition_control #(.ENABLE_PRESSURE(1)) control(.pressure_keys(wax_keys),.pressure_gains(wax_gains),.clk(clk),.reset_n(reset_n),.tick(sample_tick),.touch_keys(touch_keys),.serial_keys({usb_hi,usb_lo}),.bluetooth_keys({bt_hi,bt_lo}),
+    competition_control #(.ENABLE_PRESSURE(1),.ENABLE_LASER(1)) control(.laser_keys(laser_keys),.pressure_keys(wax_keys),.pressure_gains(wax_gains),.clk(clk),.reset_n(reset_n),.tick(sample_tick),.touch_keys(touch_keys),.serial_keys({usb_hi,usb_lo}),.bluetooth_keys({bt_hi,bt_lo}),
       .commit(commit),.id(command_id),.value(command_value),.effect_flags(fx_params[7:0]),.ui_stop(ui_stop||press1),.ui_live(ui_live),.record_playing(replaying),.axis_valid(axis_valid),.axis_bend(axis_bend),.axis_gain(axis_gain),.axis_vibrato(axis_vibrato),
       .volume(volume),.attack(attack),.decay(decay),.release_time(release_time),.sustain(sustain),.instrument(instrument),.guitar_chord(guitar_chord),.guitar_analysis(guitar_analysis),.stopped(stopped),.clear_audio(clear_audio),
       .hold_mode(hold_mode),.test_count(test_count),.selected(selected),.test_muted(test_muted),.bend(bend),.gain(gain),.vibrato(vibrato),.vibrato_override(vibrato_override),.bpm(bpm),.song(song),
@@ -130,7 +157,7 @@ module dualmode_top #(
     // still play audio, but cannot produce a matrix-training score.
     practice32 #(.ENABLE_PRESSURE_MODE(1)) practice(.clk(clk),.reset_n(reset_n),.tick(sample_tick),.bpm(practice_bpm),.song(song),.note_numbers(note_numbers),
       .pressure_mode(matrix_mode),.pressure_ready(wax_ready),
-      .command_valid(practice_command_valid||ui_live),.command(practice_command_valid?practice_command:2'd0),.halt(stopped||test_count!=0),.keys(matrix_mode?{16'd0,matrix_scoring_keys}:(touch_keys|serial_keys|{16'd0,wax_keys})),
+      .command_valid(practice_command_valid||ui_live),.command(practice_command_valid?practice_command:2'd0),.halt(stopped||test_count!=0),.keys(matrix_mode?{16'd0,matrix_scoring_keys}:(touch_keys|serial_keys|laser_keys|{16'd0,wax_keys})),
       .upload_ready(upload_ready&&(!matrix_mode||upload_matrix_ok)),.upload_length(upload_expected),.uploaded_note(song_note),.uploaded_duration(song_duration),.read_address(song_address),
       .running(practice_running),.paused(practice_paused),.finished(practice_finished),.gate(practice_gate),.step(practice_step),.cue(practice_cue),.progress(practice_progress),.length(practice_length),
       .score(practice_score),.combo(practice_combo),.hits(practice_hits),.misses(practice_misses),.feedback(practice_feedback),.target_note(practice_target),.countdown(practice_countdown),.position(practice_position));
@@ -182,7 +209,7 @@ module dualmode_top #(
     instrument_screen #(.SHOW_FSR(0),.PANEL_UI(1)) display(.clk(lcd_sysclk),.audio_clk(clk),.sample_tick(sample_tick),.pcm(pcm),.performance_info(display_info),.panel_page(page),.fx_params(fx_params),.panel_bend(bend),.selected_pad(selected[3:0]),
       .selected_raw(wax_selected_raw>16383?14'd16383:wax_selected_raw[13:0]),.selected_baseline(wax_selected_base>16383?14'd16383:wax_selected_base[13:0]),.selected_threshold(wax_selected_threshold>16383?14'd16383:wax_selected_threshold[13:0]),.selected_gain(wax_gains[selected[3:0]*9+:9]),.fsr_pressures(wax_display),.bt_rx_count(bt_rx_count),.game_position(practice_position),
       .fsr_ready(wax_ready),.fsr_fault(wax_noisy),.fsr_calibrating(wax_calibrating),.fsr_peak(wax_peak>16383?14'd16383:wax_peak[13:0]),.fsr_keys(matrix_mode?matrix_scoring_keys:wax_keys),.fsr_delta(wax_delta>16383?14'd16383:wax_delta[13:0]),.fsr_threshold(wax_on>16383?14'd16383:wax_on[13:0]),.fsr_cal_mask(wax_cal),
-      .auto_mode(practice_running),.stopped(stopped),.game_page(game_page),.game_running(practice_running),.game_finished(practice_finished),.game_score(practice_score),.game_keys(matrix_mode?matrix_last_keys:(bank?(touch_keys[31:16]|serial_keys[31:16]):(touch_keys[15:0]|serial_keys[15:0]|wax_keys))),.game_cue(matrix_mode?practice_cue[15:0]:visible_cue),
+      .auto_mode(practice_running),.stopped(stopped),.game_page(game_page),.game_running(practice_running),.game_finished(practice_finished),.game_score(practice_score),.game_keys(matrix_mode?matrix_last_keys:(bank?(touch_keys[31:16]|serial_keys[31:16]|laser_keys[31:16]):(touch_keys[15:0]|serial_keys[15:0]|laser_keys[15:0]|wax_keys))),.game_cue(matrix_mode?practice_cue[15:0]:visible_cue),
       .game_combo(practice_combo),.game_max(practice_combo),.game_hits(practice_hits),.game_misses(practice_misses),.game_progress(practice_progress[5:0]),.game_wrong(10'd0),.game_feedback(practice_feedback),.game_countdown(practice_countdown),.game_target(practice_target[3:0]),.game_next(practice_target[3:0]),
       .instrument(instrument),.touch_chip(touch_chip),.plot_mode(plot_mode),.live_keys(visible_keys),.volume(volume),.attack_sel(attack),.decay_sel(decay),.sustain_level(sustain),.release_sel(release_time),
       .touch_online(touch_online),.cursor_down(cursor_down),.cursor_x(cursor_x),.cursor_y(cursor_y),.orientation(orientation),.finger_count(finger_count),.touch_errors(touch_errors),

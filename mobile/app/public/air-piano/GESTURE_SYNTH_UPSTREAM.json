@@ -1,0 +1,8 @@
+{
+  "project": "Gesture Synth",
+  "author": "Eric Wei",
+  "repository": "https://github.com/ericwei97-cloud/gesture-synth",
+  "commit": "7ee25ba8c30f0a0cf544835a2dae199e4b7b9484",
+  "license": "Educational and non-commercial; attribution required; see GESTURE_SYNTH_LICENSE.txt",
+  "adaptation": "Chord classification, voicing and hand expression ported to offline MediaPipe Hands and FPGA control. No upstream Web Audio, CDN or analytics executed. Octaves revoiced for fixed E2-B4 slots; right tilt controls FPGA reverb."
+}

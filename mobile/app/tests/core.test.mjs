@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {DEFAULT_NOTES,SONGS,noteName,frequency,pressureValue,loadState,validateRecord,accuracy} from '../public/core.js';
+test('16-pad mapping spans C4 to D#5 with no duplicates',()=>{assert.equal(new Set(DEFAULT_NOTES).size,16);assert.equal(noteName(DEFAULT_NOTES[12]),'C4');assert.equal(noteName(DEFAULT_NOTES[3]),'D#5');assert.equal(frequency(69),440);});
+test('all built-in songs are playable on default layout',()=>{for(const s of SONGS)for(const e of s.score)assert.ok(DEFAULT_NOTES.includes(e.note));});
+test('pressure curves remain bounded and ordered',()=>{for(const x of [0,.1,.5,1]){assert.ok(pressureValue(x,'soft')>=pressureValue(x));assert.ok(pressureValue(x,'firm')<=pressureValue(x));}assert.equal(pressureValue(-1),0);assert.equal(pressureValue(2),1);});
+test('invalid local storage cannot poison playback configuration',()=>{const s=loadState({getItem:()=>JSON.stringify({volume:999,notes:[1],instrument:'no',records:[{name:'broken'}]})});assert.equal(s.volume,100);assert.deepEqual(s.notes,DEFAULT_NOTES);assert.equal(s.instrument,'piano');assert.deepEqual(s.records,[]);});
+test('import rejects unbounded events and unknown instruments',()=>{const r={name:'take',duration:1000,instrument:'piano',events:[{type:'on',time:0,pad:0,midi:60,velocity:.5}]};assert.ok(validateRecord(r));assert.ok(!validateRecord({...r,instrument:'unknown'}));assert.ok(!validateRecord({...r,events:[{...r.events[0],time:90000}]}));assert.ok(!validateRecord({...r,events:[{...r.events[0],velocity:99}]}));});
+test('practice accuracy reflects actual wrong attempts',()=>{assert.equal(accuracy(0,0),0);assert.equal(accuracy(3,1),75);assert.equal(accuracy(42,0),100);});
+test('invalid imported envelope is rejected',()=>{assert.equal(validateRecord({name:'bad',duration:0,instrument:'piano',events:[],params:{attack:-4,decay:200,sustain:400,release:1e12}}),false);});
